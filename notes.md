@@ -73,3 +73,13 @@ In Django, we need to explicitly set static images up inside our project. We wil
 3. We then create the static files directory inside the root directory, as well as the static files
 
 4. Finally, we can add the files to the HTML template using template tags - we import the info using ```{% load static from staticfiles %}```; then, we load the file using a **link**, with href ```{% static '[filename]' %}```
+
+## Advanced Templates
+
+Since we want every page's style to be coherent, there is a lot of info that will be repeated in each template. So, we can make a **base_layout** template and make the others extend from that one.
+
+1. Create the **base_layout** file with the generic code.
+
+2. Where the template specific code should go, we write ```{% block content %} ... {% endblock %}```
+
+3. Then, in the other templates, we add the same template tags ```{% block content %} ... {% endblock %}``` around their content, and we add ```{% extends 'base_layout.html' %}``` at the top.
