@@ -12,3 +12,10 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+    def snippet(self):
+        SNIPPET_LEN = 100
+        snippet = self.body[:SNIPPET_LEN]
+        if len(self.body) > SNIPPET_LEN:
+            snippet = snippet[:SNIPPET_LEN-3] + '...'
+        return snippet

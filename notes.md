@@ -55,3 +55,21 @@ The ORM is built-in into Django to interact with the database using the model.
 - To create a user with access to admin area, run ```python manage.py createsuperuser``` (mine is sofi, pass sofichan23)
 
 - To manage a new model from within the admin area, we need to register the model in the **admin.py** file inside the corresponding app
+
+## Display dynamic data
+
+1. In the **views** file, send the list of articles to the template as an argument of render
+
+2. In the HTML template, we can use template tags to loop through the articles: ```{% %}``` for code and ```{{ }}``` for outputting data
+
+## Static Files (CSS, JavaScript, Images)
+
+In Django, we need to explicitly set static images up inside our project. We will tell Django to serve up our images, for now.
+
+1. In the main **urls** file, we need to add **staticfiles_urlpatterns** to the known **urlpatterns**
+
+2. Then, in the settings file, we need to set up a **STATICFILES_DIRS** tuple with the path to the directory where we will store the static files
+
+3. We then create the static files directory inside the root directory, as well as the static files
+
+4. Finally, we can add the files to the HTML template using template tags - we import the info using ```{% load static from staticfiles %}```; then, we load the file using a **link**, with href ```{% static '[filename]' %}```
