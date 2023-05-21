@@ -104,3 +104,23 @@ Since we want every page's style to be coherent, there is a lot of info that wil
 4. Then, we need to output the image in the article details template.
 
 4. Finally, we can add an article with an image to the database using the admin area.
+
+## User registration
+
+1. Create accounts app and add it to **INSTALLED_APPS**.
+
+2. Create **urls** file inside the app and set its patterns (in our case, a signup url). Then, include the urls in the main **urls** file. Create the respective views functions in the **views** file and then the **templates** folder, as well as the templates.
+
+While we could create the signup template from scratch and then handle the authentication in the server ourselves, Django comes with a built-in user creation form (with validation and hints).
+
+3. To use it, we first need to import the form in the **views** file. Then, we can create an instance of the form and then pass it to the template.
+
+4. In the template, we can display the form inside a form tag. We set the action var of the form to post to the signup url. Additionally, we need to send the CSRF token with the form. Then, we only need to add an input field for the user to signup.
+
+5. In the **signup_view** function, we now need to distinguish if the request was a GET or a POST. If it was a POST, we retrieve the user data, validate it and save it to the database.
+
+6. Log the user in
+
+7. Finally, we redirect to the main page (in our case, the article list).
+
+[comment]: <> (user created: sauropod podpod12, rexopod podpod12)
