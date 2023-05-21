@@ -83,3 +83,10 @@ Since we want every page's style to be coherent, there is a lot of info that wil
 2. Where the template specific code should go, we write ```{% block content %} ... {% endblock %}```
 
 3. Then, in the other templates, we add the same template tags ```{% block content %} ... {% endblock %}``` around their content, and we add ```{% extends 'base_layout.html' %}``` at the top.
+
+## Advanced URLs
+
+- To capure a parameter in a URL, we can write ```<var_type:var_name>``` as the received slug in the **urls** file. This will result in passing **var_name** as a parameter to the respective request processing function in the **views** file.
+
+- We can also name specific urls using the **name** parameter in the **path** function. This is useful so we can refer to them when in other files. Additionally, it is useful to namespace our urls by declaring the **app_name** in thet **urls** file.
+    - Then we can, for example, add an anchor to the articles' titles and link it to each article's detailed page using ```<a href="{% url 'articles:details' slug=article.slug %}">```.
