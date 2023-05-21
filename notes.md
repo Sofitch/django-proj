@@ -41,12 +41,14 @@ The ORM is built-in into Django to interact with the database using the model.
 - To add an element to the database on the interactive shell:
     1. Import the model: ```from articles.models import Article```
     2. Create the element: ```article1 = Article()```
-    3. Define the element: ```article1.title = 'Totoro'```
+    3. Define the element: ```article1.title = '[value]'```
     4. Save the element: ```article1.save()```
 
 - To display all the elements: ```Article.objects.all()``` 
 
     - Inside the class, we can also add the function **\_\_str\_\_** to define how we want the elements to be displayed
+
+- To get a specific element: ```Article.objects.get([param]=[value])```
 
 ## Django Admin Area
 
@@ -90,3 +92,15 @@ Since we want every page's style to be coherent, there is a lot of info that wil
 
 - We can also name specific urls using the **name** parameter in the **path** function. This is useful so we can refer to them when in other files. Additionally, it is useful to namespace our urls by declaring the **app_name** in thet **urls** file.
     - Then we can, for example, add an anchor to the articles' titles and link it to each article's detailed page using ```<a href="{% url 'articles:details' slug=article.slug %}">```.
+
+## Uploading Media
+
+1. Like for static files, we need to declare a **MEDIA_URL** and a **MEDIA_ROOT** in the **settings** file, so that Django knows where to store and find the images.
+
+2. Likewise, we need to add the media files' url patterns to the **urlpatterns** property in the main **urls** file.
+
+3. We need to add an image field to our model and migrate it.
+
+4. Then, we need to output the image in the article details template.
+
+4. Finally, we can add an article with an image to the database using the admin area.
