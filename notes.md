@@ -148,3 +148,18 @@ If the user is redirected to the login page, we will then want to redirect the u
     1. We first need to change the login html template to look for a **request.GET.next** and, if it exists, add a hidden input type with the value of the next param, so that it is sent to the view function when the user logs in.
 
     2. We then handle the information on the login_view function
+
+## Model forms
+
+We want to allow a user to create new articles, which is done using a model form. In Django, a model form is a class that inherits from **django.forms.ModelForm** (just like the AuthenticationForm, for example, which is pre-built). 
+
+1. We thus create a **forms** file inside article, where we will define our model forms.
+
+2. Inside that class, we define a subclass **Meta**, where we define which model and which fields will be present in the form.
+
+3. We then create an instance of the model form in the **views** file and send it to the HTML file.
+
+4. In the HTML file, we display the form as usual (since our form will be receiving a media file, we need to add ```enctype="multipart/form-data"``` to our HTML form). 
+
+5. Finally, back in the **views** file, we handle the form data. If the request is a POST, and the data is valid, we save the new article to the database.
+
