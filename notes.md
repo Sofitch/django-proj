@@ -139,3 +139,12 @@ Logout URLs are usually accessed with a POST request. Django already knows which
 
 2. Then, we add a logout button to the base layout. To do so, we add a **nav** tag inside the header, and inside it we make a **list**, where one element is the logout **form**. This form should redirect to the logout url. Inside the form, we add the necessary **CSRF token**, and the logout **button**.
 
+## User-only page
+
+To restrict a page to logged in users only, we add the Django **login_required** decorator to that page's view.
+
+If the user is redirected to the login page, we will then want to redirect the user back to the restricted page. The Django login decorator puts additional info (a 'next' param) in the login url: we can use it to know if the login page was called by a decorator, and which page the user was trying to access.
+
+    1. We first need to change the login html template to look for a **request.GET.next** and, if it exists, add a hidden input type with the value of the next param, so that it is sent to the view function when the user logs in.
+
+    2. We then handle the information on the login_view function
