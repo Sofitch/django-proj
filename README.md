@@ -12,8 +12,11 @@ Simple blog created with Django, following Net Ninja's Django tutorial.
 
         > Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
         > ./[env]/Scripts/activate.ps1
-        > pip install django
+        
+3. On the django-proj folder, install the requirements (inlcudes django):
 
-3. Finally, on the djangofi root folder, run the server with:
+        > pip install -r requirements.txt
+
+4. Finally, on the djangofi root folder, run the server with:
 
         > python manage.py runserver
