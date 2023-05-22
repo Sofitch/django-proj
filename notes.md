@@ -184,3 +184,15 @@ We want to associate each article with the user that created it.
 ## Styling the blog
 
 The style changes notes are commented directly on the **styles** CSS file. To style the page, we used the inspect feature of the browser so that we can see the changes as we do them. Note: shift+F5 to hard refresh a page for the css files to take action.
+
+## Auto-generate slug
+
+To do this, we will use javascript.
+
+1. We create a **slugify.js** file in the **assets** folder.
+
+2. We link the **article_create** HTML template to the script.
+
+3. In the js file, we start by grabbing the 2 fields we need: slug and title.
+
+4. We want to detect whenever a user types on the title field. We do that by adding an EventListener to the title field. When that happens, we add a callback function that will set the slug value to the result of slugifying the title value. This function is further explained in the **slugify.js** file.
