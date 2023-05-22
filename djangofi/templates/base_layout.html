@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
-    <header>
-        <h1><a href="{% url 'articles:list' %}"><img src="{% static 'dino.png' %}" height="30px" ></a></h1>
+    <header class="wrapper">
+        <h1><a href="{% url 'home' %}"><img src="{% static 'dino.png' %}" height="30px" ></a></h1>
         <nav>
             <ul>
                 {% if user.is_authenticated %}

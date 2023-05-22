@@ -6,7 +6,6 @@ from . import forms
 
 def article_list(request):
     articles = Article.objects.all().order_by('date')
-    print(request.user)
     return render(request, 'articles/article_list.html', {'articles': articles})
 
 @login_required(login_url="accounts:login")

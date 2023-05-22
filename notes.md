@@ -180,3 +180,7 @@ We want to associate each article with the user that created it.
 - Inside HTML templates, we have access to the user. We can check if there is a logged in user simply with ```{% if user.is_authenticated %}```.
 
 - Usually, we use anchor tags for buttons that redirect to other pages (such as login or signup). For logout we used a form with a button, since we needed to send a POST request.
+
+## Styling the blog
+
+The style changes notes are commented directly on the **styles** CSS file. To style the page, we used the inspect feature of the browser so that we can see the changes as we do them. Note: shift+F5 to hard refresh a page for the css files to take action.

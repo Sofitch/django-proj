@@ -1,5 +1,5 @@
 body{
-    background: rgb(15, 2, 32);
+    background: rgb(124 8 71);
     background-image: url(purple.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -18,4 +18,135 @@ h1, h2, h3, h4, h5{
 a, a:hover, a:visited{
     color:#fff;
     text-decoration: none;
+}
+
+.wrapper{
+    max-width: 960px;
+    margin: 0 auto; /* centers the content on the page */
+}
+
+div.wrapper h1{
+    text-align: center;
+    margin: 50px auto; /* 100px top and bottom, auto left right */
+    font-size: 2.4em;
+}
+
+header.wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 equal fractions*/
+    padding: 20px 0;
+}
+
+nav{
+    justify-self: end;
+}
+
+nav li{
+    display: inline-block; /* display them next to each other, and get rid of the bullet points */
+    margin-left: 20px; /* spread them out a bit */
+}
+
+nav button{
+    background: none;
+    color: #fff;
+    cursor: pointer; /* hand cursor when you hover over it */
+    border: 0;
+    font-size: 1em;    
+}
+
+.articles{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+}
+
+.article{
+    padding: 10px;
+    border: 1px solid rgb(228 169 213);
+    position: relative;
+    padding-bottom: 40px;
+}
+
+.article h2{
+    font-size: 1.2em;   
+}
+
+.article .author{
+    padding: 10px;
+    background: rgb(228 169 213);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    color: rgb(124 8 71);
+    
+}
+
+/* article details page */
+
+.article-detail .article{
+    padding: 0px;
+}
+
+.article-detail .article img{
+    width: 100%;
+}
+
+.article-detail .article h2{
+    text-align: center;
+    margin: 20x auto;
+    font-size: 2em;
+}
+
+.article-detail .article p{
+    text-align: center;
+}
+
+/* forms */
+
+.site-form{
+    margin-top: 60px;
+    border: 1px solid rgb(228 169 213);
+    padding: 20px;
+}
+
+.site-form input, .site-form textarea{
+    display: block;
+    margin: 20px 0 0 0;
+    padding: 10px;
+}
+
+a.highlight{
+    border: 1px solid rgb(228 169 213);
+    padding: 10px;
+    border-radius: 4px;
+    color: rgb(228 169 213);
+}
+
+.helptext, .helptext ul{
+    margin: 0 auto 20px;
+    color: #bbb;
+    font-size: 0.9em;
+    display: block;
+}
+
+.errorlist li{
+    padding: 10px;
+    list-style-type: none; /* remove the bullet */
+    border: 1px solid rgb(255 0 68);
+    color: rgb(255 0 68);
+    margin: 10px 0;
+}
+
+.errorlist{
+    padding: 0;
+}
+
+.site-form input[type="submit"]{
+    background: rgb(228 169 213);
+    border: 0;
+    color: #fff;
+    font-size: 1.2em;
+    border-radius: 4px; /* round edges */
+    margin: 10px 0; 
 }
