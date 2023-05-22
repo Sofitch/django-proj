@@ -5,7 +5,7 @@
     <div class="article">
         <h2>{{ article.title }}</h2>
         <img src="{{ article.thumb.url }}">
-        <p>{{ article.body }}</p>
+        <p>{{ article.body|linebreaks }}</p>
         <p>{{ article.date }}</p>
     </div>
 </div>
