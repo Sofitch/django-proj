@@ -1,6 +1,5 @@
 from django.db import models
-
-# Create your models here.
+from django.contrib.auth.models import User
 
 class Article(models.Model):
     title = models.CharField(max_length=100)
@@ -8,8 +7,7 @@ class Article(models.Model):
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     thumb = models.ImageField(default='default.png', blank=True)
-    # add in thumbnail later
-    # add in author later
+    author = models.ForeignKey(User, default=None, on_delete=models.CASCADE) # because user is also an instance of a model
 
     def __str__(self):
         return self.title

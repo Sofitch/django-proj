@@ -13,7 +13,9 @@ def article_create(request):
     if request.method == 'POST':
         form = forms.CreateArticle(data=request.POST, files=request.FILES)
         if form.is_valid():
-            # save article to db
+            article = form.save(commit=False) # dont save right away
+            article.author = request.user
+            article.save() # save article to db
             return redirect('articles:list')
     else:
         form = forms.CreateArticle()

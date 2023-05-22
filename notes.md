@@ -2,7 +2,7 @@
 # Net Ninja Django Tutorial - Notes
 
 ## General
-- To activate the python environment, run ```Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force; > ./djenv/Scripts/activate.ps1```.
+- To activate the python environment, run ```Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force; ./djenv/Scripts/activate.ps1```.
 
 - To run the blog, run ```python manage.py runserver```
 
@@ -145,9 +145,11 @@ To restrict a page to logged in users only, we add the Django **login_required**
 
 If the user is redirected to the login page, we will then want to redirect the user back to the restricted page. The Django login decorator puts additional info (a 'next' param) in the login url: we can use it to know if the login page was called by a decorator, and which page the user was trying to access.
 
-    1. We first need to change the login html template to look for a **request.GET.next** and, if it exists, add a hidden input type with the value of the next param, so that it is sent to the view function when the user logs in.
+1. We first need to change the login html template to look for a **request.GET.next** and, if it exists, add a hidden input type with the value of the next param, so that it is sent to the view function when the user logs in.
 
-    2. We then handle the information on the login_view function
+2. We then handle the information on the login_view function
+
+**Note on decorators in python:** adding ```@decorator``` above ```def func():``` will make it so, every time we call ````func()````, it actually calls ```decorator(func)```. The decorator is actually a function that receives another function as an argument, and extends it - it can call **func**, and can add code before and/or after calling.
 
 ## Model forms
 
@@ -161,5 +163,14 @@ We want to allow a user to create new articles, which is done using a model form
 
 4. In the HTML file, we display the form as usual (since our form will be receiving a media file, we need to add ```enctype="multipart/form-data"``` to our HTML form). 
 
-5. Finally, back in the **views** file, we handle the form data. If the request is a POST, and the data is valid, we save the new article to the database.
+5. Finally, back in the **views** file, we handle the form data. If the request is a POST, and the data is valid, we save the new article to the database using ````form.save()```.
 
+## Saving the author
+
+We want to associate each article with the user that created it.
+
+1. For that, we use a Foreign Key - a way to associate an instance of a model with an instance of another model - to set an **author** field on the **Article** model. We then migrate the changes.
+
+2. Then, in the **article_create** view function, we need to add the author to the article before saving it. To do so, we can add the parameter ```commit=False``` to the **save** function, so that we can retrieve the article instance without it being saved right away.
+
+3. Then, we get the logged in user from the request, and we associate it to the article. After that, we can finally save the instance.
