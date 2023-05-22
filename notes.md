@@ -174,3 +174,9 @@ We want to associate each article with the user that created it.
 2. Then, in the **article_create** view function, we need to add the author to the article before saving it. To do so, we can add the parameter ```commit=False``` to the **save** function, so that we can retrieve the article instance without it being saved right away.
 
 3. Then, we get the logged in user from the request, and we associate it to the article. After that, we can finally save the instance.
+
+## Updating the nav bar
+
+- Inside HTML templates, we have access to the user. We can check if there is a logged in user simply with ```{% if user.is_authenticated %}```.
+
+- Usually, we use anchor tags for buttons that redirect to other pages (such as login or signup). For logout we used a form with a button, since we needed to send a POST request.

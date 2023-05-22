@@ -14,12 +14,18 @@
         <h1><a href="{% url 'articles:list' %}"><img src="{% static 'dino.png' %}" height="30px" ></a></h1>
         <nav>
             <ul>
+                {% if user.is_authenticated %}
+                <li><a class="highlight" href="{% url 'articles:create' %}">Add Dino</a></li>
                 <li>
                     <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
                         {% csrf_token %}
                         <button type="submit">Logout</button>
                     </form>
                 </li>
+                {% else %}
+                <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
